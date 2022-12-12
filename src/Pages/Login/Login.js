@@ -1,14 +1,60 @@
-import React from "react";
-import google from "./Google.svg";
+import React, { useEffect } from "react";
+// import google from "./Google.svg";
 import topShape from "./shape-top.svg";
 import bottomShape from "./shape-bottom.svg";
 import logo from "./logo.svg";
 import img from "./img.svg";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { gapi } from "gapi-script";
+
+// importing google login service
+
+import { GoogleLogin, GoogleLogout } from "react-google-login";
+
+const ClientId = process.env.REACT_APP_AUTH_CLIENT_ID;
+// const ClientSecret = process.env.CLIENT_SECRET;
 
 const Login = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: ClientId,
+        scope: "",
+      });
+    }
+    gapi.load("client:auth2", start);
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const userData = {
+      email,
+      password,
+    };
+    console.log(userData);
+  };
+
+  // const googleSignIn = () => {
+  //   console.log("Sigining in...");
+  // };
+
+  const onSuccess = (res) => {
+    console.log("Login Successful, Current User:", res.profileObj);
+    navigate("/dashboard");
+  };
+  const onLogoutSuccess = (res) => {
+    console.log("Logout Successful");
+  };
+  const onFailure = (res) => {
+    console.log("Login Failed, Res:", res);
+  };
+
   return (
     <div className="w-full mx-auto min-h-screen flex lg:flex-row flex-col justify-between items-center overflow-hidden">
       <div className="lg:w-1/2 w-full flex justify-start items-center min-h-screen bg-white">
@@ -18,7 +64,7 @@ const Login = () => {
             Enter your credentials to access to your account
           </p>
 
-          <form action="" className="mt-5">
+          <form action="" className="mt-5" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="">Email</label>
               <input
@@ -26,7 +72,7 @@ const Login = () => {
                 name="email"
                 className="w-full input input-bordered my-2"
                 placeholder="Enter your email"
-                id=""
+                id="email"
               />
             </div>
             <div className="form-group mt-4">
@@ -37,7 +83,7 @@ const Login = () => {
                   className="w-full"
                   name="password"
                   placeholder="••••••••"
-                  id=""
+                  id="pass"
                 />
                 <AiOutlineEyeInvisible />
               </div>
@@ -59,11 +105,32 @@ const Login = () => {
             </div>
 
             <button className="btn w-full bg-blue-800 border-0">Sign in</button>
-            <button className="btn w-full btn-outline mt-7">
-              <img src={google} className="inline-block mr-2" alt="" />
-              Sign in with Google
-            </button>
           </form>
+          {/* <button
+            onClick={googleSignIn}
+            className="btn w-full btn-outline mt-7"
+          >
+            <img src={google} className="inline-block mr-2" alt="" />
+            Sign in with Google
+          </button> */}
+
+          <div className="btn btn-outline hover:bg-transparent mt-5">
+            <GoogleLogin
+              clientId={ClientId}
+              buttonText="Login with Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy="single_host_origin"
+              isSignedIn={true}
+            />
+          </div>
+          <div className="btn btn-outline hover:bg-transparent mt-5">
+            <GoogleLogout
+              clientId={ClientId}
+              buttonText="Log Out"
+              onLogoutSuccess={onLogoutSuccess}
+            />
+          </div>
 
           <p className="my-5 text-center">
             Don’t have an account?{" "}
