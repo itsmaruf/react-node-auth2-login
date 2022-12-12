@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import google from "./Google.svg";
 import topShape from "./shape-top.svg";
 import bottomShape from "./shape-bottom.svg";
@@ -52,6 +52,15 @@ const Login = () => {
     console.log("Login Failed, Res:", res);
   };
 
+  const [type, setType] = useState("password");
+  const typeChanger = () => {
+    if (type === "password") {
+      setType("text");
+    } else if (type === "text") {
+      setType("password");
+    }
+  };
+
   return (
     <div className="w-full mx-auto min-h-screen flex lg:flex-row flex-col justify-between items-center overflow-hidden">
       <div className="lg:w-1/2 w-full flex justify-start items-center min-h-screen bg-white">
@@ -74,15 +83,15 @@ const Login = () => {
             </div>
             <div className="form-group mt-4">
               <label htmlFor="">Password</label>
-              <div className="flex input input-bordered items-center justify-between my-2">
+              <div className="flex input input-bordered items-center justify-between my-2 overflow-hidden">
                 <input
-                  type="password"
-                  className="w-full"
+                  type={type}
+                  className="w-full input bg-transparent border-0 outline-0 shadow-none focus:border-0 focus:outline-0 focus:shadow-none"
                   name="password"
                   placeholder="••••••••"
                   id="pass"
                 />
-                <AiOutlineEyeInvisible />
+                <AiOutlineEyeInvisible onClick={typeChanger} />
               </div>
             </div>
 

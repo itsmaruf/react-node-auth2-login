@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import topShape from "./shape-top.svg";
 import bottomShape from "./shape-bottom.svg";
 import logo from "./logo.svg";
@@ -32,6 +32,23 @@ const Register = () => {
     }
     gapi.load("client:auth2", start);
   }, []);
+
+  const [type, setType] = useState("password");
+  const [type2, setType2] = useState("password");
+  const typeChanger = () => {
+    if (type === "password") {
+      setType("text");
+    } else if (type === "text") {
+      setType("password");
+    }
+  };
+  const typeChanger2 = () => {
+    if (type2 === "password") {
+      setType2("text");
+    } else if (type2 === "text") {
+      setType2("password");
+    }
+  };
 
   return (
     <div className="w-full mx-auto min-h-screen flex lg:flex-row flex-col justify-between items-center overflow-hidden">
@@ -68,26 +85,26 @@ const Register = () => {
                 <label htmlFor="">Password</label>
                 <div className="flex input input-bordered items-center justify-between my-2">
                   <input
-                    type="password"
-                    className="w-full"
+                    type={type}
+                    className="w-full input bg-transparent border-0 outline-0 shadow-none focus:border-0 focus:outline-0 focus:shadow-none"
                     name="password"
                     placeholder="••••••••"
                     id="pass1"
                   />
-                  <AiOutlineEyeInvisible />
+                  <AiOutlineEyeInvisible onClick={typeChanger} />
                 </div>
               </div>
               <div className="lg:w-1/2 w-full form-group mt-4 lg:ml-2">
                 <label htmlFor="">Confirm Password</label>
                 <div className="flex input input-bordered items-center justify-between my-2">
                   <input
-                    type="password"
-                    className="w-full"
+                    type={type2}
+                    className="w-full input bg-transparent border-0 outline-0 shadow-none focus:border-0 focus:outline-0 focus:shadow-none"
                     name="password"
                     placeholder="••••••••"
                     id="pass2"
                   />
-                  <AiOutlineEyeInvisible />
+                  <AiOutlineEyeInvisible onClick={typeChanger2} />
                 </div>
               </div>
             </div>
