@@ -1,14 +1,38 @@
-import React from "react";
-import google from "./Google.svg";
+import React, { useEffect } from "react";
 import topShape from "./shape-top.svg";
 import bottomShape from "./shape-bottom.svg";
 import logo from "./logo.svg";
 import img from "./img.svg";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import GoogleLogin from "react-google-login";
+import { gapi } from "gapi-script";
+
+const ClientId = process.env.REACT_APP_AUTH_CLIENT_ID;
+// const ClientSecret = process.env.CLIENT_SECRET;
 
 const Register = () => {
+  const navigate = useNavigate();
+  const onSuccess = (res) => {
+    console.log("Login Successful, Current User:", res.profileObj);
+    navigate("/dashboard");
+  };
+
+  const onFailure = (res) => {
+    console.log("Login Failed, Res:", res);
+  };
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: ClientId,
+        scope: "",
+      });
+    }
+    gapi.load("client:auth2", start);
+  }, []);
+
   return (
     <div className="w-full mx-auto min-h-screen flex lg:flex-row flex-col justify-between items-center overflow-hidden">
       <div className="lg:w-1/2 w-full flex justify-start items-center min-h-screen bg-white">
@@ -26,7 +50,7 @@ const Register = () => {
                 name="name"
                 className="w-full input input-bordered my-2"
                 placeholder="Enter your name"
-                id=""
+                id="name"
               />
             </div>
             <div className="form-group mt-4">
@@ -36,7 +60,7 @@ const Register = () => {
                 name="name"
                 className="w-full input input-bordered my-2"
                 placeholder="Email or Phone"
-                id=""
+                id="eop"
               />
             </div>
             <div className="flex lg:flex-row flex-col justify-between items-center">
@@ -48,7 +72,7 @@ const Register = () => {
                     className="w-full"
                     name="password"
                     placeholder="••••••••"
-                    id=""
+                    id="pass1"
                   />
                   <AiOutlineEyeInvisible />
                 </div>
@@ -61,7 +85,7 @@ const Register = () => {
                     className="w-full"
                     name="password"
                     placeholder="••••••••"
-                    id=""
+                    id="pass2"
                   />
                   <AiOutlineEyeInvisible />
                 </div>
@@ -71,11 +95,22 @@ const Register = () => {
             <button className="btn w-full bg-blue-800 border-0 mt-5">
               Sign up
             </button>
-            <button className="btn w-full btn-outline mt-7">
+            {/* <button className="btn w-full btn-outline mt-7">
               <img src={google} className="inline-block mr-2" alt="" />
               Sign in with Google
-            </button>
+            </button> */}
           </form>
+
+          <div className="btn btn-outline hover:bg-transparent mt-5">
+            <GoogleLogin
+              clientId={ClientId}
+              buttonText="Login with Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy="single_host_origin"
+              isSignedIn={true}
+            />
+          </div>
 
           <p className="my-5 text-center">
             Already have an account?

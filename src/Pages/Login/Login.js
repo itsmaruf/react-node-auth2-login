@@ -11,7 +11,7 @@ import { gapi } from "gapi-script";
 
 // importing google login service
 
-import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 
 const ClientId = process.env.REACT_APP_AUTH_CLIENT_ID;
 // const ClientSecret = process.env.CLIENT_SECRET;
@@ -47,9 +47,6 @@ const Login = () => {
   const onSuccess = (res) => {
     console.log("Login Successful, Current User:", res.profileObj);
     navigate("/dashboard");
-  };
-  const onLogoutSuccess = (res) => {
-    console.log("Logout Successful");
   };
   const onFailure = (res) => {
     console.log("Login Failed, Res:", res);
@@ -122,13 +119,6 @@ const Login = () => {
               onFailure={onFailure}
               cookiePolicy="single_host_origin"
               isSignedIn={true}
-            />
-          </div>
-          <div className="btn btn-outline hover:bg-transparent mt-5">
-            <GoogleLogout
-              clientId={ClientId}
-              buttonText="Log Out"
-              onLogoutSuccess={onLogoutSuccess}
             />
           </div>
 
