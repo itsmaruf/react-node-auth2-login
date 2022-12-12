@@ -1,0 +1,29 @@
+.muted{
+    color: #949CA9
+}
+label{
+    color: #344054;
+    font-size: 14px;
+    font-weight: 500;
+}
+.right{
+    background-color: #0022D2;
+    overflow: hidden;
+}
+img.topShape {
+    position: absolute;
+    top: 0px;
+    left: -65px;
+}
+img.bottomShape {
+    position: absolute;
+    bottom: 0;
+    left: -130px;
+}
+img.bottom-img {
+    width: 45%;
+    margin-left: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
