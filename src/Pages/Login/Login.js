@@ -62,9 +62,9 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full mx-auto min-h-screen flex lg:flex-row flex-col justify-between items-center overflow-hidden">
+    <div className="w-full mx-auto min-h-screen flex lg:flex-row flex-col-reverse justify-between items-center overflow-hidden">
       <div className="lg:w-1/2 w-full flex justify-start items-center min-h-screen bg-white">
-        <div className="card lg:w-1/2 w-1/3 mx-auto">
+        <div className="card lg:w-1/2 w-full lg:p-0 p-4 mx-auto">
           <h2 className="text-2xl text-black">Sign in</h2>
           <p className="fs-14 poppins muted">
             Enter your credentials to access to your account

@@ -27,3 +27,16 @@ img.bottom-img {
     bottom: 0;
     right: 0;
 }
+.mt-64 h2, .mt-64 p {
+    position: relative;
+    z-index: 10;
+}
+@media screen and (max-width: 767px){
+    img.bottom-img {
+        width: 100;
+        margin-left: auto;
+        position: unset;
+        bottom: 0;
+        display: none;
+    }
+}
