@@ -33,31 +33,23 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    const userData = {
-      email,
-      password,
-    };
-    // console.log(userData);
-    fetch(`http://localhost:8000/api/v1/verify?email=${email}`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      mode: "cors",
-      // body: JSON.stringify(userData),
-    })
+    fetch(
+      `http://localhost:8000/api/v1/verify?email=${email}&password=${password}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        mode: "cors",
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        // localStorage.setItem("token", res.token);
       });
-    // form.reset();
+    form.reset();
   };
-
-  // const googleSignIn = () => {
-  //   console.log("Sigining in...");
-  // };
 
   const onSuccess = (res) => {
     console.log("Login Successful, Current User:", res.profileObj);
