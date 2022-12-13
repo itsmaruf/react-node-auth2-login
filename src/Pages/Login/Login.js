@@ -38,21 +38,21 @@ const Login = () => {
       password,
     };
     // console.log(userData);
-    fetch("http://localhost:8000/api/v1/verify", {
-      method: "POST",
+    fetch(`http://localhost:8000/api/v1/verify?email=${email}`, {
+      method: "GET",
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       mode: "cors",
-      body: JSON.stringify(userData),
+      // body: JSON.stringify(userData),
     })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        localStorage.setItem("token", res.token);
+        // localStorage.setItem("token", res.token);
       });
-    form.reset();
+    // form.reset();
   };
 
   // const googleSignIn = () => {

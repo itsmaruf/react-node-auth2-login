@@ -14,6 +14,40 @@ const ClientId = process.env.REACT_APP_AUTH_CLIENT_ID;
 
 const Register = () => {
   const navigate = useNavigate();
+
+  const [error, setError] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+    if (password !== confirmPassword) {
+      return setError("Passwords do not match");
+    }
+    const userData = {
+      email,
+      password,
+    };
+    // console.log(userData);
+    fetch("http://localhost:8000/api/v1/verify/jwt", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      mode: "cors",
+      body: JSON.stringify(userData),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.token);
+      });
+    form.reset();
+  };
+
   const onSuccess = (res) => {
     console.log("Login Successful, Current User:", res.profileObj);
     navigate("/dashboard");
@@ -59,7 +93,7 @@ const Register = () => {
             Enter details to create your account
           </p>
 
-          <form action="" className="mt-5">
+          <form action="" className="mt-5" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="">Your name</label>
               <input
@@ -68,16 +102,18 @@ const Register = () => {
                 className="w-full input input-bordered my-2"
                 placeholder="Enter your name"
                 id="name"
+                required
               />
             </div>
             <div className="form-group mt-4">
-              <label htmlFor="">E-mail or phone numbers</label>
+              <label htmlFor="">E-mail</label>
               <input
-                type="text"
-                name="name"
+                type="email"
+                name="email"
                 className="w-full input input-bordered my-2"
                 placeholder="Email or Phone"
                 id="eop"
+                required
               />
             </div>
             <div className="flex lg:flex-row flex-col justify-between items-center">
@@ -90,6 +126,7 @@ const Register = () => {
                     name="password"
                     placeholder="••••••••"
                     id="pass1"
+                    required
                   />
                   <AiOutlineEyeInvisible onClick={typeChanger} />
                 </div>
@@ -100,14 +137,17 @@ const Register = () => {
                   <input
                     type={type2}
                     className="w-full input bg-transparent border-0 outline-0 shadow-none focus:border-0 focus:outline-0 focus:shadow-none"
-                    name="password"
+                    name="confirmPassword"
                     placeholder="••••••••"
                     id="pass2"
+                    required
                   />
                   <AiOutlineEyeInvisible onClick={typeChanger2} />
                 </div>
               </div>
             </div>
+
+            <p className="text-error">{error}</p>
 
             <button className="btn w-full bg-blue-800 border-0 mt-5">
               Sign up
