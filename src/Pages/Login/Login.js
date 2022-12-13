@@ -32,18 +32,14 @@ const Login = () => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
-    const password = form.password.value;
-    fetch(
-      `http://localhost:8000/api/v1/verify?email=${email}&password=${password}`,
-      {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        mode: "cors",
-      }
-    )
+    fetch(`http://localhost:8000/api/v1/verify?email=${email}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      mode: "cors",
+    })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
