@@ -42,6 +42,7 @@ const Login = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       mode: "cors",
       body: JSON.stringify(userData),
