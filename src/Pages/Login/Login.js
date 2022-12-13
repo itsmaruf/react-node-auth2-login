@@ -37,7 +37,21 @@ const Login = () => {
       email,
       password,
     };
-    console.log(userData);
+    // console.log(userData);
+    fetch("http://localhost:8000/api/v1/verify", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify(userData),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.token);
+      });
+    form.reset();
   };
 
   // const googleSignIn = () => {
@@ -79,6 +93,7 @@ const Login = () => {
                 className="w-full input input-bordered my-2"
                 placeholder="Enter your email"
                 id="email"
+                required
               />
             </div>
             <div className="form-group mt-4">
@@ -90,6 +105,7 @@ const Login = () => {
                   name="password"
                   placeholder="••••••••"
                   id="pass"
+                  required
                 />
                 <AiOutlineEyeInvisible onClick={typeChanger} />
               </div>
