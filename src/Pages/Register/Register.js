@@ -48,6 +48,7 @@ const Register = () => {
         console.log(res);
         localStorage.setItem("token", res.contactObj.token);
         toast.success("Registration successful!");
+        navigate("/login");
       });
     // form.reset();
   };
