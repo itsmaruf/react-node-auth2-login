@@ -8,6 +8,7 @@ import "./Register.css";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
+import { toast } from "react-toastify";
 
 const ClientId = process.env.REACT_APP_AUTH_CLIENT_ID;
 // const ClientSecret = process.env.CLIENT_SECRET;
@@ -20,6 +21,7 @@ const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
@@ -27,6 +29,7 @@ const Register = () => {
       return setError("Passwords do not match");
     }
     const userData = {
+      name,
       email,
       password,
     };
@@ -43,9 +46,10 @@ const Register = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        localStorage.setItem("token", res.token);
+        localStorage.setItem("token", res.contactObj.token);
+        toast.success("Registration successful!");
       });
-    form.reset();
+    // form.reset();
   };
 
   const onSuccess = (res) => {
@@ -195,6 +199,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      {/* <ToastContainer /> */}
     </div>
   );
 };

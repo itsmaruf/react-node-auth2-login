@@ -12,6 +12,7 @@ import { gapi } from "gapi-script";
 // importing google login service
 
 import { GoogleLogin } from "react-google-login";
+import { toast } from "react-toastify";
 
 const ClientId = process.env.REACT_APP_AUTH_CLIENT_ID;
 // const ClientSecret = process.env.CLIENT_SECRET;
@@ -43,6 +44,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
+        toast.success("Email Sent!");
       });
     form.reset();
   };
@@ -162,6 +164,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      {/* <ToastContainer /> */}
     </div>
   );
 };
