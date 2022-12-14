@@ -33,18 +33,27 @@ const Login = () => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
-    fetch(`http://localhost:8000/api/v1/verify?email=${email}`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      mode: "cors",
-    })
+    const password = form.password.value;
+    fetch(
+      `http://localhost:8000/api/v1/verify?email=${email}&password=${password}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        mode: "cors",
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        toast.success("Email Sent!");
+        if (res.status !== 401) {
+          navigate("/dashboard");
+          toast.success("Email Sent!");
+        } else {
+          toast.error(res.message);
+        }
       });
     form.reset();
   };
