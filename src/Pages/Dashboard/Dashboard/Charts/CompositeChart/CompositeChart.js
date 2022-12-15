@@ -11,103 +11,96 @@ import {
 import "./CompositeChart.css";
 const data = [
   {
-    name: "Page A",
+    name: "Apr",
     uv: 40,
     pv: 10,
   },
   {
-    name: "Page B",
+    name: "May",
     uv: -60,
     pv: 90,
   },
   {
-    name: "Page C",
+    name: "Jun",
     uv: 100,
     pv: 30,
   },
   {
-    name: "Page D",
+    name: "Jul",
     uv: 190,
     pv: 190,
   },
   {
-    name: "Page E",
+    name: "Aug",
     uv: 100,
     pv: 300,
   },
   {
-    name: "Page F",
+    name: "Sep",
     uv: -20,
     pv: 290,
   },
   {
-    name: "Page G",
+    name: "Oct",
     uv: 50,
-    pv: 350,
+    pv: 450,
   },
   {
-    name: "Page G",
+    name: "Nov",
     uv: 0,
     pv: 250,
   },
   {
-    name: "Page G",
+    name: "Dec",
     uv: 100,
-    pv: 300,
-  },
-  {
-    name: "Page G",
-    uv: 130,
-    pv: 350,
-  },
-  {
-    name: "Page G",
-    uv: 100,
-    pv: 400,
+    pv: 500,
   },
 ];
 
 const CompositeChart = () => {
   return (
-    <AreaChart
-      width={800}
-      height={400}
-      data={data}
-      className="composite-chart"
-      margin={{
-        top: 10,
-        right: 30,
-        left: 0,
-        bottom: 0,
-      }}
-    >
-      <defs>
-        <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#580F5A" stopOpacity={1} />
-          <stop offset="100%" stopColor="#ffffff" stopOpacity={0} />
-        </linearGradient>
-      </defs>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Area
-        type="monotone"
-        dataKey="pv"
-        stackId="1"
-        stroke="#000000"
-        strokeWidth={2}
-        fill="url(#colorUv)"
-      />
-      <Area
-        type="monotone"
-        dataKey="uv"
-        stackId="1"
-        stroke="#571159"
-        strokeWidth={3}
-        fill="url(#colorUv)"
-      />
-    </AreaChart>
+    <>
+      <h2 className="font-bold text-xl text-gray-600 mb-5">Overview</h2>
+      <AreaChart
+        width={800}
+        height={400}
+        data={data}
+        className="composite-chart"
+        margin={{
+          top: 10,
+          right: 30,
+          left: 0,
+          bottom: 0,
+        }}
+      >
+        <defs>
+          <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#580F5A" stopOpacity={1} />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity={0} />
+          </linearGradient>
+        </defs>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Area
+          type="monotone"
+          dataKey="pv"
+          stackId="1"
+          stroke="#000000"
+          strokeWidth={2}
+          fill="url(#colorUv)"
+        />
+        <Area
+          type="monotone"
+          dataKey="uv"
+          stackId="1"
+          stroke="#571159"
+          strokeWidth={3}
+          fill="url(#colorUv)"
+        />
+      </AreaChart>
+    </>
   );
 };
 
