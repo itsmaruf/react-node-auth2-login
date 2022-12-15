@@ -1,0 +1,21 @@
+.input-group {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 40px;
+}
+span.indicator-item.badge.badge-secondary {
+    transform: scale(0.4);
+    left: 20px;
+    top: 7px;
+}
+button.logout-btn {
+    box-shadow: unset !important;
+}
+.bg-c {
+    border-bottom: 1px solid #E2E2E2;
+    min-height: 70px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,9 @@
+.sidebar {
+    background-color: #FFFFFF;
+    width: 260px;
+    min-height: 100vh;
+    /* padding: 16px; */
+}
+.br-c{
+    border-right: 1px solid #E2E2E2;
+}
