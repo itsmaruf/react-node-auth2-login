@@ -2,11 +2,15 @@ import React from "react";
 import "./Sidebar.css";
 import logo from "./logo.png";
 import { GrHomeRounded } from "react-icons/gr";
-import { BiPieChartAlt2 } from "react-icons/bi";
+import { BiPieChartAlt2, BiCog } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
 import { RiFileEditFill } from "react-icons/ri";
 import { FaMoneyBillWave } from "react-icons/fa";
-import { AiOutlineLineChart, AiOutlineFileText } from "react-icons/ai";
+import {
+  AiOutlineLineChart,
+  AiOutlineFileText,
+  AiOutlineQuestionCircle,
+} from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -40,6 +44,16 @@ const Sidebar = () => {
       icon: RiFileEditFill,
     },
   ];
+  const support = [
+    {
+      name: "Settings",
+      icon: BiCog,
+    },
+    {
+      name: "Help Center",
+      icon: AiOutlineQuestionCircle,
+    },
+  ];
   return (
     <div className="sidebar br-c">
       <div className="logo-holder bg-c p-4">
@@ -47,16 +61,34 @@ const Sidebar = () => {
       </div>
 
       <div className="menu-holder p-4">
-        <p className="text-sm text-gray-700">General</p>
-        <ul className="mt-10">
-          {
-            // eslint-disable-next-line array-callback-return
-            menu.map((item, index) => {
-              <li key={index}>
-                <Link to="/">x</Link>
-              </li>;
-            })
-          }
+        <p className="text-sm text-gray-700 px-6">General</p>
+        <ul className="my-5">
+          {menu.map((item, index) => (
+            <li key={index}>
+              <Link
+                to="/"
+                className="flex items-center p-2 hover:bg-violet-200 rounded-md px-5"
+              >
+                <item.icon className="mr-2" />
+                {item.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <p className="text-sm text-gray-700 px-6 mt-10">Support</p>
+        <ul className="my-5">
+          {support.map((item, index) => (
+            <li key={index}>
+              <Link
+                to="/"
+                className="flex items-center p-2 hover:bg-violet-200 rounded-md px-5"
+              >
+                <item.icon className="mr-2" />
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
