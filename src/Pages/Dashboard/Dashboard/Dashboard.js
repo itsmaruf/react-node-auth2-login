@@ -2,11 +2,12 @@ import React from "react";
 import "./Dashboard.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { BsBoxArrowUp } from "react-icons/bs";
+import UserCards from "./UserCards/UserCards";
 
 const Dashboard = () => {
   return (
     <div className="p-6">
-      <div className="min-h-full bg-white p-4">
+      <div className="min-h-full bg-white p-10">
         <div className="flex justify-between items-center">
           <div className="user">
             <h2 className="text-xl font-semibold text-blue">
@@ -26,6 +27,8 @@ const Dashboard = () => {
             </button>
           </div>
         </div>
+
+        <UserCards></UserCards>
       </div>
     </div>
   );
