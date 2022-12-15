@@ -3,6 +3,7 @@ import "./Dashboard.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { BsBoxArrowUp } from "react-icons/bs";
 import UserCards from "./UserCards/UserCards";
+import Charts from "./Charts/Charts";
 
 const Dashboard = () => {
   return (
@@ -29,6 +30,7 @@ const Dashboard = () => {
         </div>
 
         <UserCards></UserCards>
+        <Charts></Charts>
       </div>
     </div>
   );
