@@ -2,3 +2,23 @@ g.recharts-layer.recharts-pie {
     transform-origin: center center;
     transform: scale(1.5);
 }
+
+.ind{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 5px
+}
+
+.ind.men{
+    background-color: #A8B8D8;
+}
+.ind.women{
+    background-color: #571159;
+}
+.ind.children{
+    background-color: #E371E7;
+}
+.ind.other{
+    background-color: #A8A2A5;
+}
