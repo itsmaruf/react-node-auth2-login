@@ -26,9 +26,9 @@ const Sidebar = () => {
       to: "/dashboard/campaigns",
     },
     {
-      name: "User",
+      name: "Contacts",
       icon: FiUsers,
-      to: "/dashboard/user",
+      to: "/dashboard/contacts",
     },
     {
       name: "Analytics",

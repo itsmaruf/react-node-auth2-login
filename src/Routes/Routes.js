@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import Main from "../Pages/Main/Main";
 import Register from "../Pages/Register/Register";
 import Campaigns from "../Pages/Campaigns/Campaigns";
+import Contacts from "../Pages/Contacts/Contacts";
 
 const router = [
   {
@@ -36,14 +37,20 @@ const router = [
             element: <Campaigns />,
           },
           {
+            path: "/dashboard/contacts",
+            element: <Contacts />,
+          },
+          {
             path: "/dashboard/*",
             element: <Broken></Broken>,
+            errorElement: <h2>OMG</h2>,
           },
         ],
       },
       {
         path: "*",
         element: <Broken></Broken>,
+        errorElement: <h2>OMG</h2>,
       },
     ],
   },
