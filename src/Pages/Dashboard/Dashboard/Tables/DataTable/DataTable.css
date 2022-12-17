@@ -1,0 +1,18 @@
+.online {
+    background: #B0EED3;
+    border: transparent;
+    color: #1AAE6F;
+    font-weight: bold;
+}
+.offline {
+    background: #FDD1DA;
+    border: transparent;
+    color: #F80031;
+    font-weight: bold;
+}
+.pending {
+    background: #ffe1a5;
+    border: transparent;
+    color: #ffaa00;
+    font-weight: bold;
+}

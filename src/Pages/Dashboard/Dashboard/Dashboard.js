@@ -4,6 +4,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { BsBoxArrowUp } from "react-icons/bs";
 import UserCards from "./UserCards/UserCards";
 import Charts from "./Charts/Charts";
+import Tables from "./Tables/Tables";
 
 const Dashboard = () => {
   return (
@@ -31,6 +32,7 @@ const Dashboard = () => {
 
         <UserCards></UserCards>
         <Charts></Charts>
+        <Tables></Tables>
       </div>
     </div>
   );
