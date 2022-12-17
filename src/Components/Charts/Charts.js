@@ -1,6 +1,6 @@
 import React from "react";
-import CompositeChart from "../../../../Components/CompositeChart/CompositeChart";
-import PiChart from "../../../../Components/PiChart/PiChart";
+import CompositeChart from "../CompositeChart/CompositeChart";
+import PiChart from "../PiChart/PiChart";
 
 const Charts = () => {
   return (

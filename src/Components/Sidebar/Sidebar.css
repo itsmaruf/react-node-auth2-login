@@ -8,3 +8,8 @@
 .br-c{
     border-right: 1px solid #E2E2E2;
 }
+.sidebar-menu-item.active {
+    background: #F1F0FF;
+    color: #571159;
+    font-weight: bold;
+}

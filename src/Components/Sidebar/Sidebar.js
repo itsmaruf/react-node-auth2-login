@@ -11,37 +11,44 @@ import {
   AiOutlineFileText,
   AiOutlineQuestionCircle,
 } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const menu = [
     {
-      name: "Home",
+      name: "Dashboard",
       icon: GrHomeRounded,
+      to: "/dashboard",
     },
     {
       name: "Campaign",
       icon: BiPieChartAlt2,
+      to: "/dashboard/campaigns",
     },
     {
       name: "User",
       icon: FiUsers,
+      to: "/dashboard/user",
     },
     {
       name: "Analytics",
       icon: AiOutlineLineChart,
+      to: "/dashboard/analytics",
     },
     {
       name: "Reports",
       icon: AiOutlineFileText,
+      to: "/dashboard/reports",
     },
     {
       name: "Billing",
       icon: FaMoneyBillWave,
+      to: "/dashboard/billing",
     },
     {
       name: "Documents",
       icon: RiFileEditFill,
+      to: "/dashboard/documents",
     },
   ];
   const support = [
@@ -65,13 +72,14 @@ const Sidebar = () => {
         <ul className="my-5">
           {menu.map((item, index) => (
             <li key={index}>
-              <Link
-                to="/"
-                className="flex items-center p-2 hover:bg-violet-200 rounded-md px-5"
+              <NavLink
+                to={item.to}
+                className="flex items-center p-2 hover:bg-violet-200 rounded-md px-5 sidebar-menu-item"
+                end
               >
                 <item.icon className="mr-2" />
                 {item.name}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

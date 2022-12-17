@@ -3,8 +3,8 @@ import "./Dashboard.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { BsBoxArrowUp } from "react-icons/bs";
 import UserCards from "./UserCards/UserCards";
-import Charts from "./Charts/Charts";
 import Tables from "./Tables/Tables";
+import Charts from "../../../Components/Charts/Charts";
 
 const Dashboard = () => {
   return (

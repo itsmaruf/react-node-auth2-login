@@ -4,6 +4,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import Login from "../Pages/Login/Login";
 import Main from "../Pages/Main/Main";
 import Register from "../Pages/Register/Register";
+import Campaigns from "../Pages/Campaigns/Campaigns";
 
 const router = [
   {
@@ -29,6 +30,14 @@ const router = [
           {
             path: "/dashboard",
             element: <Dashboard></Dashboard>,
+          },
+          {
+            path: "/dashboard/campaigns",
+            element: <Campaigns />,
+          },
+          {
+            path: "/dashboard/*",
+            element: <Broken></Broken>,
           },
         ],
       },
