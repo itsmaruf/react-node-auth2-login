@@ -1,6 +1,6 @@
 import React from "react";
 import DataTable from "./DataTable/DataTable";
-import ProgressTable from "./ProgressTable/ProgressTable";
+import ProgressTable from "../../../../Components/ProgressTable/ProgressTable";
 
 const Tables = () => {
   return (
