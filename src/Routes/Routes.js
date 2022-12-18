@@ -6,6 +6,7 @@ import Main from "../Pages/Main/Main";
 import Register from "../Pages/Register/Register";
 import Campaigns from "../Pages/Campaigns/Campaigns";
 import Contacts from "../Pages/Contacts/Contacts";
+import CustomWorkflow from "../Pages/CustomWorkflow/CustomWorkflow";
 
 const router = [
   {
@@ -44,6 +45,10 @@ const router = [
             path: "/dashboard/*",
             element: <Broken></Broken>,
             errorElement: <h2>OMG</h2>,
+          },
+          {
+            path: "/dashboard/campaign/:id",
+            element: <CustomWorkflow></CustomWorkflow>,
           },
         ],
       },

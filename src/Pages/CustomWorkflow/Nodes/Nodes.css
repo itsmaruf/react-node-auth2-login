@@ -1,0 +1,44 @@
+.greeting-node {
+    height: auto;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 0px;
+    border-radius: 20px;
+    min-width: 350px;
+    background: white;
+  }
+  
+  .greeting-node label {
+    display: block;
+    color: #777;
+    font-size: 12px;
+  }
+  
+  .react-flow__handle {
+    width: 10px !important;
+    height: 10px !important;
+    background: white !important;
+    border: 2px solid black !important;
+}
+.node-header{
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.node-body{
+    padding: 0 20px;
+}
+.border-gray{
+    border: 1px solid rgba(0,0,0,0.1);
+}
+textarea{
+    resize: none;
+}
+.node-module{
+    margin: 20px auto !important;
+}
+.result-node {
+    max-width: 350px;
+}
+.nested-flow .reactflow-wrapper {
+    height: 300px !important;
+    min-height: 100px;
+}

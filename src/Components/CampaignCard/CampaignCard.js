@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const CampaignCard = ({ item }) => {
   const { id, name, desc } = item;
   return (
-    <Link to={`/dashboard/${id}`}>
+    <Link to={`/dashboard/campaign/${id}`}>
       <div className="card border-none shadow-md rounded-md bg-white">
         <div className="card-body text-center flex flex-col justify-center items-center">
           <p className="text-lg">{name}</p>
